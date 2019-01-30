@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucky Sevens</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style>
+    body {
+      text-align: center;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    h1 {
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      margin-top: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      border: 3px solid;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 88%;
+    }
+    td {
+      text-align: right;
+      border: 1px solid;
+      padding: 5px 10px;
+    }
+    tr:nth-child(odd) {
+      background-color: #dbdbdb;
+    }
+    hr {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      border: 1px solid;
+    }
+    #startingBet {
+      font-size: 80%;
+      text-align: center;
+      padding: 5px;
+      width: 85px;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    #play {
+      font-size: 160%;
+      padding: 6px 16px;
+      margin-top: 20px;
+    }
+    #playAgain {
+      margin-top: 20px;
+      font-size: 120%;
+    }
+    #startBetC {
+      padding-left: 12px;
+    }
+    .trFirst {
+      background-color: #bdbdbd;
+    }
+    .info {
+      text-align: left;
+    }
+   @media (min-width: 600px) {
+      body {
+        width: 600px;
+      }
+    }
+    </style>
+  <script src="luckySevens.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <h1>Lucky Sevens</h1>
+  <h3>Starting Bet: <span id="startBetC">$</span><input type="number" id="startingBet" name="startingBet" min=1 max=99999></h3>
+  <button type="button" id="play" name="play" onclick="play()">Play</button>
+  <div hidden id="results">
+    <hr>
+    <h2>Results</h2>
+    <table>
+      <tr class="trFirst">
+        <td class="info">Starting Bet</td>
+        <td>$<span id="startBet" class="result"></span></td>
+      </tr>
+      <tr>
+        <td class="info">Total Rolls Before Going Broke</td>
+        <td><span id="total" class="result"></span></td>
+      </tr>
+      <tr>
+        <td class="info">Highest Amount Won</td>
+        <td>$<span id="highest" class="result"></span></td>
+      </tr>
+      <tr>
+        <td class="info">Roll Count at Highest Amount Won</td>
+        <td><span id="count" class="result"></span></td>
+      </tr>
+    </table>
+    <button type="button" id="playAgain" name="playAgain" onclick="enablePlay()">Play Again?</button>
+  </div>
+</body>
+
+</html>
