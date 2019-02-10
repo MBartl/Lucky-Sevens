@@ -45,37 +45,19 @@ function play() {
         maxCount = rollTotal;
       }
       rollTotal++;
-/*Bug occuring when winning on first roll:
-    Win on first role added "+ 4" from if (rolldice() == 7) to the END
-    of the gameMoney string,  e.g. starting bet = "20", win on first
-    roll changes gameMoney to "204" rather than 24
-    Code below added to circumvent this*/
-      if (rollTotal == 1) {
-        if (rollDice() == 7) {
-          gameMoney = (gameMoney - 1);
-          gameMoney = (gameMoney + 5);
-          console.log("Roll: " + rollTotal + " was a 7! Your new total is: " + gameMoney);
-        } else {
-          gameMoney = startingBet;
-          gameMoney = (startingBet - 1);
-          console.log("Roll: " + rollTotal + " lost. New total: " + gameMoney);
-        }
+      //Main game code
+      if (rollDice() == 7) {
+        gameMoney = (parseInt(gameMoney) + 4);
+        console.log("Roll: " + rollTotal + " was a 7! Your new total is: " + gameMoney);
+      } else {
+        gameMoney = (parseInt(gameMoney) - 1);
+        console.log("Roll: " + rollTotal + " lost. New total: " + gameMoney);
       }
-//Main game code (every roll after first roll)
-      if (rollTotal > 1) {
-        if (rollDice() == 7) {
-          gameMoney = (gameMoney + 4);
-          console.log("Roll: " + rollTotal + " was a 7! Your new total is: " + gameMoney);
-        } else {
-          gameMoney = (gameMoney - 1);
-          console.log("Roll: " + rollTotal + " lost. New total: " + gameMoney);
-        }
-      }
-      if (gameMoney == 0) {
-        startingBet = (document.getElementById("startingBet").value);
-        displayResults();
-        disablePlay();
-      }
+    }
+    if (gameMoney == 0) {
+      startingBet = (document.getElementById("startingBet").value);
+      displayResults();
+      disablePlay();
     }
   }
 }
